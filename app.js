@@ -10,8 +10,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user')
 
-const campgrounds = require('./routes/campgrounds');
-const reviews = require('./routes/reviews');
+const userRoute = require('./routes/users');
+const campgroundRoute = require('./routes/campgrounds');
+const reviewRoute = require('./routes/reviews');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
     useNewUrlParser: true,
@@ -73,16 +74,11 @@ app.use((req, res, next) => {
     next();
 })
 
-app.get('/fakeUser', async(req, res) => {
-    const user = new User({ email: 'test@gamil.com', username: 'test' })
-    // register 사용하여 데이터베이스에 저장(현재는 평문이나 실제로 passport가 hash 해서 저장한다.)
-    const newUser = await User.register(user, 'pass')
-    res.send(newUser);
-})
 
-app.use('/campgrounds', campgrounds)
-app.use('/campgrounds/:id/reviews', reviews)
-
+app.use('/', userRoute);
+app.use('/campgrounds', campgroundRoute);
+app.use('/campgrounds/:id/reviews', reviewRoute);
+;
 app.get('/', (req, res) => {
     res.render('home')
 });

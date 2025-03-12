@@ -10,6 +10,7 @@ const UserSchema = new Schema({
     }
 });
 
+// 스키마에 자동으로 id, password를 추가해준다
 UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema);
