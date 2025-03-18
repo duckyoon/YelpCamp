@@ -31,6 +31,7 @@
         </div>
 
     </div>
+    <% if (currentUser) { %>
     <div class="col-6">
         <h2>Leave a Review</h2>
         <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
@@ -59,4 +60,5 @@
         </div>
         <% } %>
     </div>
+    <% } %>
 </div>
