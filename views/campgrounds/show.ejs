@@ -10,7 +10,10 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-muted"><%= campground.location%></li>
-                <li class="list-group-item">Submitted by <%= campground.author.username %></li>
+                <!-- <pre><%= JSON.stringify(campground, null, 2) %></pre> -->
+                <% if (campground.author && campground.author.username) { %>
+                <li class="list-group-item">Submitted by <%- campground.author.username %></li>
+                <% } %>
                 <li class="list-group-item">$<%= campground.price%>/night</li>
             </ul>
             <div class="card-body">
