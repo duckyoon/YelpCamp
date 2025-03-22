@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production"){
+    require('dotenv').config();
+}
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -96,8 +100,10 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-app.listen(3000, () => {
-    console.log('Serving on port 3000')
+
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`서버 실행 중 : http://localhost:${PORT}`);
 })
 
 
