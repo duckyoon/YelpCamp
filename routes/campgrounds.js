@@ -4,7 +4,9 @@ const catchAsync = require('../utils/catchAsync');
 const campgrounds = require('../controllers/campgrounds');
 
 const multer = require('multer');
-const upload = multer({dest: 'uploads/'});
+// 찾을 파일 입력을 안하면 해당 폴더에서 자동으로 index 파일을 찾는다.
+const { storage } = require('../cloudinary');
+const upload = multer({ storage });
 
 const { isLoggedIn, validateCampground, isAuthor } = require('../middleware');
 
