@@ -19,9 +19,9 @@
                     Looks good!
                 </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="image">Add image</label>
-                <input type="file" name="image" id="image" multiple>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="image" name="image" multiple>
+                <label class="input-group-text" for="image" >Add image</label>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="price">Campground Price</label>
@@ -29,7 +29,7 @@
                     <span class="input-group-text" id="price-label">$</span>
                     <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
                         aria-describedby="price-label" name="campground[price]" value="<%=campground.price %>"
-                        required>\<div class="valid-feedback">
+                        required><div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
