@@ -42,6 +42,8 @@ module.exports.showCampground = async (req, res,) => {
         req.flash('error', 'Cannot find that campground!');
         return res.redirect('/campgrounds');
     }
+    if (!campground.geometry.coordinates)
+        console.log("geometry 데이터 없음")
     res.render('campgrounds/show', { campground });
 };
 
